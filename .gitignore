@@ -1,3 +1,5 @@
 *.pem
 *.csr
+*.jks
+*.pkcs12
 testCA/**

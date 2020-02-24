@@ -1,0 +1,2 @@
+keytool -import -file testCA/cacert.pem -alias my_ca -keystore truststore.jks -storepass mypassword
+
