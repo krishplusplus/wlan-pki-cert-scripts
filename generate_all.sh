@@ -5,6 +5,7 @@ echo Cleaning up old files
 echo ====================================================
 echo Creating Certificate Authority
 ./create-ca.sh
+cp testCA/cacert.pem cacert.pem
 
 echo ====================================================
 echo Creating Server Certificate
@@ -12,9 +13,16 @@ echo Creating Server Certificate
 ./sign-server-cert-request.sh
 
 echo ====================================================
+echo Creating Server Certificate
+./create-mqtt-server-cert-request.sh
+./sign-mqtt-server-cert-request.sh
+./decrypt-mqtt-server-key.sh
+
+echo ====================================================
 echo Creating Client Certificate
 ./create-client-cert-request.sh
 ./sign-client-cert-request.sh
+./decrypt-client-key.sh
 
 echo ====================================================
 echo Verifying Server Certificate
