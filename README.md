@@ -2,11 +2,11 @@
 
 Scripts for creating PKI certificates for test servers and clients.
 
-*** WARNING: These scripts are just examples - only to get help developers getting started. ***
+***WARNING: These scripts are just examples - only to get help developers getting started.***
 
-*** WARNING: Make sure you know what you are doing when you generate certificates for production systems!!! ***
+***WARNING: Make sure you know what you are doing when you generate certificates for production systems!!!***
 
-*** WARNING: do not check in generated certificates into publically available source control systems!!! ***
+***WARNING: do not check in generated certificates into publically available source control systems!!!***
 
 Some background reading:
 * http://www.moserware.com/2009/06/first-few-milliseconds-of-https.html
