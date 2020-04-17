@@ -1,6 +1,9 @@
 HOME            = .
 RANDFILE        = $ENV::HOME/.rnd
 
+input_password  = mypassword
+output_password = mypassword
+
 ####################################################################
 [ req ]
 default_bits       = 2048

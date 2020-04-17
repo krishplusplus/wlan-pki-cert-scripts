@@ -8,12 +8,13 @@ echo Creating Certificate Authority
 cp testCA/cacert.pem cacert.pem
 
 echo ====================================================
-echo Creating Server Certificate
+echo Creating Generic Server Certificate
 ./create-server-cert-request.sh
 ./sign-server-cert-request.sh
+./decrypt-server-key.sh
 
 echo ====================================================
-echo Creating Server Certificate
+echo Creating MQTT Server Certificate
 ./create-mqtt-server-cert-request.sh
 ./sign-mqtt-server-cert-request.sh
 ./decrypt-mqtt-server-key.sh

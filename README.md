@@ -17,10 +17,8 @@ Some background reading:
 
 Run the following script to generate the self-signed CA, server, and client keys and certificates.
 
-You will be asked for the pass-phrases for the CA key and for the Server key, they have to be provided. 
-Just hit Enter for all other prompts to accept the defaults.
 ```
-$ generate_all.sh
+$ ./generate_all.sh
 ```
 
 At this point the following files will be generated:
@@ -30,8 +28,13 @@ truststore.jks <- CA public certificate in jks format
 
 servercert.pem <- Server public certificate
 serverkey.pem <- Server private key, protected by the pass-phrase
+serverkey_dec.pem <- Server private key, unprotected
 server.pkcs12 <- Server private key and public certificate in pkcs12 format, protected by password
 server_keystore.jks <- Server private key and public certificate in jks format, protected by password
+
+mqttservercert.pem <- MQTT Server public certificate
+mqttserverkey.pem <- MQTT Server private key, protected by the pass-phrase
+mqttserverkey_dec.pem <- MQTT Server private key, unprotected
 
 clientcert.pem <- Client public certificate
 clientkey.pem <- Client private key, unprotected
@@ -40,6 +43,7 @@ client_keystore.jks <- Client private key and public certificate in jks format, 
 ```
 
 Server certificates are to be used by all the services in the cloud.
+MQTT Server certificates are to be used by the mqtt server, they have its hostname encoded.
 
 Client certificates are to be used by the APs and AP simulators.
 
