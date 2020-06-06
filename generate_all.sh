@@ -20,6 +20,11 @@ echo Creating MQTT Server Certificate
 ./decrypt-mqtt-server-key.sh
 
 echo ====================================================
+echo Creating Kafka Server Certificate
+./create-kafka-server-cert-request.sh
+./sign-kafka-server-cert-request.sh
+
+echo ====================================================
 echo Creating Client Certificate
 ./create-client-cert-request.sh
 ./sign-client-cert-request.sh
@@ -34,8 +39,9 @@ echo Verifying Client Certificate
 ./verify-client.sh clientcert.pem
 
 echo ====================================================
-echo Packaging Server Certificate
+echo Packaging Server Certificates
 ./package-server-cert.sh
+./package-kafka-server-cert.sh
 
 echo ====================================================
 echo Packaging Client Certificate
