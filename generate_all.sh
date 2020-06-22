@@ -25,6 +25,12 @@ echo Creating Kafka Server Certificate
 ./sign-kafka-server-cert-request.sh
 
 echo ====================================================
+echo Creating Cassandra Server Certificate
+./create-cassandra-server-cert-request.sh
+./sign-cassandra-server-cert-request.sh
+./decrypt-cassandra-server-key.sh
+
+echo ====================================================
 echo Creating Client Certificate
 ./create-client-cert-request.sh
 ./sign-client-cert-request.sh
@@ -42,6 +48,7 @@ echo ====================================================
 echo Packaging Server Certificates
 ./package-server-cert.sh
 ./package-kafka-server-cert.sh
+./package-cassandra-server-cert.sh
 
 echo ====================================================
 echo Packaging Client Certificate
