@@ -8,7 +8,7 @@ echo "You need to run this from wlan-pki-cert folder where the certs were genera
 echo "In Kafka, you still need to create key_creds, keystore_creds and truststore_creds files. See https://telecominfraproject.atlassian.net/wiki/spaces/WIFI/pages/262176803/Pre-requisites+before+deploying+Tip-Wlan+solution"
 
 echo "Copying certs to opensync-gw-cloud certs folder..."
-cp client_keystore.jks server.pkcs12 truststore.jks $1/tip-wlan/charts/opensync-gw-cloud/resources/config/certs
+cp cacert.pem clientcert.pem clientkey.pem client_keystore.jks server.pkcs12 truststore.jks $1/tip-wlan/charts/opensync-gw-cloud/resources/config/certs
 echo "Copying certs to opensync-gw-static certs folder"
 cp client_keystore.jks server.pkcs12 truststore.jks $1/tip-wlan/charts/opensync-gw-static/resources/config/certs
 echo "Copying certs to opensync-mqtt-broker certs folder"
