@@ -1,0 +1,28 @@
+name: Shell scripts validation
+
+on: 
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+      - name: Validate shell scripts
+        run: |
+          echo 0 > /tmp/retcode
+
+          for f in `find . -name "*sh"`; do
+            shellcheck $f || (echo 1 > /tmp/retcode &&  true)
+          done
+
+          retCode=`cat /tmp/retcode`
+
+          if [ ${retCode} -ne 0 ]; then
+            exit 1
+          fi
