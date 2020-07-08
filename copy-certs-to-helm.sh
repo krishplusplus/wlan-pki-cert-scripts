@@ -5,7 +5,7 @@
 # ./copy-certs.sh $HOME/Tip-Repo/wlan-cloud-helm
 echo "Usage: ./copy-certs.sh ${absolute-path-of-wlan-cloud-helm-dir}"
 echo "You need to run this from wlan-pki-cert folder where the certs were generated"
-echo "In Kafka and Cassandra you still need to create key_creds, keystore_creds and truststore_creds files. See https://telecominfraproject.atlassian.net/wiki/spaces/WIFI/pages/262176803/Pre-requisites+before+deploying+Tip-Wlan+solution"
+echo "In Kafka and Cassandra you need to update key_creds, keystore_creds and truststore_creds files with the correct credentials for these stores. See https://telecominfraproject.atlassian.net/wiki/spaces/WIFI/pages/262176803/Pre-requisites+before+deploying+Tip-Wlan+solution"
 
 echo "Copying certs to opensync-gw-cloud certs folder..."
 cp cacert.pem clientcert.pem clientkey.pem client_keystore.jks server.pkcs12 truststore.jks $1/tip-wlan/charts/opensync-gw-cloud/resources/config/certs
