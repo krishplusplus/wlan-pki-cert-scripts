@@ -5,7 +5,7 @@
 # ./copy-certs.sh $HOME/Tip-Repo/wlan-cloud-helm
 echo "Usage: ./copy-certs.sh ${absolute-path-of-wlan-cloud-helm-dir}"
 echo "You need to run this from wlan-pki-cert folder where the certs were generated"
-echo "In Kafka, you still need to create key_creds, keystore_creds and truststore_creds files. See https://telecominfraproject.atlassian.net/wiki/spaces/WIFI/pages/262176803/Pre-requisites+before+deploying+Tip-Wlan+solution"
+echo "In Kafka and Cassandra you still need to create key_creds, keystore_creds and truststore_creds files. See https://telecominfraproject.atlassian.net/wiki/spaces/WIFI/pages/262176803/Pre-requisites+before+deploying+Tip-Wlan+solution"
 
 echo "Copying certs to opensync-gw-cloud certs folder..."
 cp cacert.pem clientcert.pem clientkey.pem client_keystore.jks server.pkcs12 truststore.jks $1/tip-wlan/charts/opensync-gw-cloud/resources/config/certs
@@ -20,8 +20,10 @@ cp client_keystore.jks server.pkcs12 truststore.jks $1/tip-wlan/charts/wlan-port
 echo "Copying certs to wlan-prov-service certs folder"
 cp client_keystore.jks server.pkcs12 truststore.jks $1/tip-wlan/charts/wlan-prov-service/resources/config/certs/
 echo "Copying certs to wlan-ssc-service certs folder"
-cp client_keystore.jks server.pkcs12 kafka-server.pkcs12 truststore.jks $1/tip-wlan/charts/wlan-ssc-service/resources/config/certs/
+cp client_keystore.jks server.pkcs12 kafka-server.pkcs12 truststore.jks cacert.pem cassandraserverkey_dec.pem cassandraservercert.pem cassandra_server_keystore.jks $1/tip-wlan/charts/wlan-ssc-service/resources/config/certs/
 echo "Copying certs to wlan-spc-service certs folder"
 cp client_keystore.jks server.pkcs12 kafka-server.pkcs12 truststore.jks $1/tip-wlan/charts/wlan-spc-service/resources/config/certs/
 echo "Copying certs to kafka certs folder"
 cp kafka-server.pkcs12 truststore.jks $1/tip-wlan/charts/kafka/resources/config/certs/
+echo "Copying certs to cassandra certs folder"
+cp cassandra_server_keystore.jks truststore.jks cacert.pem cassandraserverkey_dec.pem cassandraservercert.pem $1/tip-wlan/charts/cassandra/resources/config/certs/
