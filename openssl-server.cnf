@@ -48,7 +48,7 @@ nsComment            = "OpenSSL Generated Server Certificate"
 
 DNS.1  = opensync-redirector.tip.lab.connectus.ai
 DNS.2  = opensync-controller.tip.lab.connectus.ai
-DNS.3  = tip-wlan-postgresql-headless
+DNS.3  = tip-wlan-postgresql
 DNS.4  = ftp.example.com
 
 # IPv4 localhost
