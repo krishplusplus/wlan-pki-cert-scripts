@@ -2,5 +2,6 @@
 *.csr
 *.jks
 *.pkcs12
+*.p12
 *.bak
 testCA/**

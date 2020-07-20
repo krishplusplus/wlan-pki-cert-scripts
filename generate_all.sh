@@ -37,6 +37,12 @@ echo Creating Client Certificate
 ./decrypt-client-key.sh
 
 echo ====================================================
+echo Creating Postgres Client Certificates
+./create-postgres-client-cert-request.sh
+./sign-postgres-client-cert-request.sh
+./decrypt-postgres-client-key.sh
+
+echo ====================================================
 echo Verifying Server Certificate
 ./verify-server.sh servercert.pem
 
@@ -51,8 +57,9 @@ echo Packaging Server Certificates
 ./package-cassandra-server-cert.sh
 
 echo ====================================================
-echo Packaging Client Certificate
+echo Packaging Client Certificates
 ./package-client-cert.sh
+./package-postgres-client-cert.sh
 
 echo ====================================================
 echo Packaging CA Certificate
