@@ -46,8 +46,8 @@ nsComment            = "OpenSSL Generated Server Certificate"
 ####################################################################
 [ alternate_names ]
 
-DNS.1  = opensync-redirector.tip.lab.connectus.ai
-DNS.2  = opensync-controller.tip.lab.connectus.ai
+DNS.1  = opensync-redirector.zone1.lab.wlan.tip.build
+DNS.2  = opensync-controller.zone1.lab.wlan.tip.build
 DNS.3  = tip-wlan-postgresql
 DNS.4  = ftp.example.com
 
