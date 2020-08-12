@@ -1,3 +1,4 @@
+#!/bin/sh
 BASE_DIR=./testCA
 
 #create target directories, set permissions

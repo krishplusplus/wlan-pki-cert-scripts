@@ -1,3 +1,5 @@
+#!/bin/sh
+
 echo ====================================================
 echo Cleaning up old files
 ./clean_all.sh

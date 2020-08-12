@@ -7,7 +7,7 @@ if [[ ! -f "${target_pem}" ]]; then
     exit 1
 fi
 
-openssl x509 -subject -issuer -noout -dates -in $target_pem
+openssl x509 -subject -issuer -noout -dates -in "$target_pem"
 
-openssl verify -purpose sslclient -CAfile ./testCA/cacert.pem $target_pem
+openssl verify -purpose sslclient -CAfile ./testCA/cacert.pem "$target_pem"
 
