@@ -15,7 +15,6 @@ jobs:
           submodules: true
       - name: Validate shell scripts
         run: |
-          #!/bin/sh
           echo 0 > /tmp/retcode
 
           for f in `find . -name "*sh"`; do
