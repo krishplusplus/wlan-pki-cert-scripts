@@ -34,6 +34,9 @@ cp client_keystore.jks server.pkcs12 kafka-server.pkcs12 truststore.jks cacert.p
 echo "=============================================="
 echo "Copying certs to wlan-spc-service certs folder"
 cp client_keystore.jks server.pkcs12 kafka-server.pkcs12 truststore.jks "$1"/tip-wlan/charts/wlan-spc-service/resources/config/certs/
+echo "================================================="
+echo "Copying certs to wlan-port-forwarding-gateway-service certs folder"
+cp client_keystore.jks server.pkcs12 truststore.jks "$1"/tip-wlan/charts/wlan-port-forwarding-gateway-service/resources/config/certs/
 echo "==================================="
 echo "Copying certs to kafka certs folder"
 cp kafka-server.pkcs12 truststore.jks "$1"/tip-wlan/charts/kafka/resources/config/certs/
