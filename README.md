@@ -89,26 +89,14 @@ package-client-cert.sh
 
 ## If you need to generate additional certificates to be used for new APs
 
-Use the following commands, replace clientkey_1 , clientcert_1 , and Test_Client_1 with the unique inventoryId of the AP:
+Use the following commands, replace ap-inventory-id with the unique inventoryId of the AP:
 
 ```
 $ cd /opt/tip-wlan/certs
-$ mkdir ap_keys
-
-# Generate certificate request
-$ openssl req -batch -config openssl-client.cnf -newkey rsa:2048 -sha256 -out ap_keys/clientcert_1.csr -keyout ap_keys/clientkey_1.pem -subj "/C=CA/ST=Ontario/L=Ottawa/O=ConnectUs Technologies/CN=Test_Client_1" -outform PEM -nodes
-
-# Sign certificate request
-$ openssl ca -batch -key mypassword -config openssl-ca.cnf -policy signing_policy -extensions signing_req_client -out ap_keys/clientcert_1.pem -infiles ap_keys/clientcert_1.csr
-
-# Create unprotected client key
-$ openssl rsa -passin pass:mypassword -in ap_keys/clientkey_1.pem -out ap_keys/clientkey_1_dec.pem
-
-# Optional - Package client key and certificate into PKCS12 format
-$ openssl pkcs12 -export -in ap_keys/clientcert_1.pem -inkey ap_keys/clientkey_1.pem -passin pass:mypassword -passout pass:mypassword -out ap_keys/client_1.pkcs12 -name clientqrcode -CAfile testCA/cacert.pem -caname root -chain
+$ ./create-ap-cert.sh ap-inventory-id
 
 # Optional - Show the content of the client certificate
-$ openssl x509 -in ap_keys/clientcert_1.pem -text -noout
+$ openssl x509 -in ap_keys/ap-inventory-id.pem -text -noout
 ```
 
-The resulting files will be ap_keys/clientkey_1_dec.pem and ap_keys/clientcert_1.pem.
+The resulting files will be ap_keys/ap-inventory-id_dec.pem and ap_keys/ap-inventory-id.pem.
