@@ -9,5 +9,5 @@ fi
 
 openssl x509 -subject -issuer -noout -dates -in "$target_pem"
 
-openssl verify -purpose sslclient -CAfile ./testCA/cacert.pem "$target_pem"
+openssl verify -purpose sslclient -CAfile "$target_pem" "$target_pem"
 
