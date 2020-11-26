@@ -21,16 +21,16 @@ then
 fi
 
 # Generate certificate request
-openssl req -batch -config openssl-client.cnf -newkey rsa:2048 -sha256 -out "ap_keys/$inventoryId-cert.csr" -keyout "ap_keys/$inventoryId-key.pem" -subj "/C=CA/ST=Ontario/L=Ottawa/O=ConnectUs Technologies/CN=$inventoryId" -outform PEM -nodes
+openssl req -batch -config configs/openssl-client.cnf -newkey rsa:2048 -sha256 -out "ap_keys/csr/$inventoryId-cert.csr" -keyout "ap_keys/$generated/inventoryId-key.pem" -subj "/C=CA/ST=Ontario/L=Ottawa/O=ConnectUs Technologies/CN=$inventoryId" -outform PEM -nodes
 
 # Sign certificate request
-openssl ca -batch -key mypassword -config openssl-ca.cnf -policy signing_policy -extensions signing_req_client -out "ap_keys/$inventoryId-cert.pem" -infiles "ap_keys/$inventoryId-cert.csr"
+openssl ca -batch -key mypassword -config configs/openssl-ca.cnf -policy signing_policy -extensions signing_req_client -out "ap_keys/$generated/inventoryId-cert.pem" -infiles "ap_keys/csr/$inventoryId-cert.csr"
 
 # Create unprotected client key
-openssl rsa -passin pass:mypassword -in "ap_keys/$inventoryId-key.pem" -out "ap_keys/$inventoryId-key_dec.pem"
+openssl rsa -passin pass:mypassword -in "ap_keys/$generated/inventoryId-key.pem" -out "ap_keys/$generated/inventoryId-key_dec.pem"
 
 # Optional - Package client key and certificate into PKCS12 format
-openssl pkcs12 -export -in "ap_keys/$inventoryId-cert.pem" -inkey "ap_keys/$inventoryId-key.pem" -passin pass:mypassword -passout pass:mypassword -out "ap_keys/$inventoryId.pkcs12" -name clientqrcode -CAfile testCA/cacert.pem -caname root -chain
+openssl pkcs12 -export -in "ap_keys/$generated/inventoryId-cert.pem" -inkey "ap_keys/$generated/inventoryId-key.pem" -passin pass:mypassword -passout pass:mypassword -out "ap_keys/$generated/inventoryId.pkcs12" -name clientqrcode -CAfile testCA/cacert.pem -caname root -chain
 
 echo "Created certificates for AP: $inventoryId"
 

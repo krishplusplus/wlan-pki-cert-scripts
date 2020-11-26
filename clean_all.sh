@@ -1,8 +1,11 @@
 #!/bin/sh
-rm -rf testCA
-rm ./*.pem
-rm ./*.csr
-rm ./*.jks
-rm ./*.pkcs12
-rm ./*.p12
 
+skipCa=$1
+
+if [ "$skipCa" = "true" ]; then
+    find ./generated ! -name "cacert.pem" ! -name "cakey.pem" -type f -exec rm -f {} +
+else
+    rm -rf testCA
+    rm -rf generated/*
+fi
+find ./csr -name "*.csr" -type f -exec rm -f {} +

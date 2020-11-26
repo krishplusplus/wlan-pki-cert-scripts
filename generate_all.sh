@@ -1,13 +1,18 @@
 #!/bin/sh
 
-echo ====================================================
-echo Cleaning up old files
-./clean_all.sh
+skipCa=$1
 
-echo ====================================================
-echo Creating Certificate Authority
-./create-ca.sh
-cp testCA/cacert.pem cacert.pem
+if [ "$skipCa" != "true" ]; then
+    echo ====================================================
+    echo Cleaning up old files
+    ./clean_all.sh
+
+    echo ====================================================
+    echo Creating Certificate Authority
+    ./create-ca.sh
+else
+    ./clean_all.sh true
+fi
 
 echo ====================================================
 echo Creating Generic Server Certificate
@@ -46,11 +51,11 @@ echo Creating Postgres Client Certificates
 
 echo ====================================================
 echo Verifying Server Certificate
-./verify-server.sh servercert.pem
+./verify-server.sh generated/servercert.pem
 
 echo ====================================================
 echo Verifying Client Certificate
-./verify-client.sh clientcert.pem
+./verify-client.sh generated/clientcert.pem
 
 echo ====================================================
 echo Packaging Server Certificates
