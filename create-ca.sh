@@ -6,9 +6,7 @@ mkdir -p $BASE_DIR/private
 chmod go-rx $BASE_DIR/private
 
 #generate the CA certificate
-echo "LOL"
 openssl req -batch -x509 -days 3000 -config configs/openssl-ca.cnf -newkey rsa:4096 -sha256 -out generated/cacert.pem -outform PEM
-echo "LIL"
 
 #move generated certificates into their proper places
 cp generated/cacert.pem $BASE_DIR

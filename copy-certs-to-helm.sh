@@ -8,7 +8,7 @@ if [[ $# -eq 0 ]] ;
 then
   echo "*** No Arguments supplied!! Expecting Absolute path of wlan-cloud-helm dir as an argument to the script ***"
   echo "*** Usage: ./copy-certs.sh absolute-path-of-wlan-cloud-helm-dir ***"
-  exit 0
+  exit 1
 fi
 echo "==============================================="
 echo "Copying certs to opensync-gw-cloud certs folder"
@@ -51,4 +51,4 @@ echo "NOTE: Additional changes are expected in Kafka, Postgres and Cassandra cha
 
 echo "========================================"
 echo "Stateful services rework certifices copy"
-cp *.pem *.jks *.pkcs12 *.p12 "$1"/tip-wlan/resources/certs
+find ./generated -type f -exec cp {} "$1"/tip-wlan/resources/certs 

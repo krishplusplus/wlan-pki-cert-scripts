@@ -12,6 +12,7 @@ if [ "$skipCa" != "true" ]; then
     ./create-ca.sh
 else
     ./clean_all.sh true
+    cp ./testCA/cacert.pem ./testCA/private/cakey.pem ./generated
 fi
 
 echo ====================================================
