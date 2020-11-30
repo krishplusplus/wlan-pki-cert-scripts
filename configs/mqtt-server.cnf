@@ -1,8 +1,8 @@
-HOME            = .
-RANDFILE        = $ENV::HOME/.rnd
+HOME               = .
+RANDFILE           = $ENV::HOME/.rnd
 
-input_password  = mypassword
-output_password = mypassword
+input_password     = mypassword
+output_password    = mypassword
 
 ####################################################################
 [ req ]
@@ -14,32 +14,32 @@ string_mask        = utf8only
 
 ####################################################################
 [ server_distinguished_name ]
-countryName         = Country Name (2 letter code)
-countryName_default = CA
+countryName                 = Country Name (2 letter code)
+countryName_default         = CA
 
 stateOrProvinceName         = State or Province Name (full name)
 stateOrProvinceName_default = Ontario
 
-localityName         = Locality Name (eg, city)
-localityName_default = Ottawa
+localityName                = Locality Name (eg, city)
+localityName_default        = Ottawa
 
 organizationName            = Organization Name (eg, company)
 organizationName_default    = ConnectUs Technologies
 
-commonName           = Common Name (e.g. server FQDN or YOUR name)
-commonName_default   = opensync-mqtt-broker.zone1.lab.wlan.tip.build
+commonName                  = Common Name (e.g. server FQDN or YOUR name)
+commonName_default          = opensync-mqtt-broker.cicd.lab.wlan.tip.build
 
-emailAddress         = Email Address
-emailAddress_default = test@example.com
+emailAddress                = Email Address
+emailAddress_default        = test@example.com
 
 ####################################################################
 [ server_req_extensions ]
 
-subjectKeyIdentifier = hash
+subjectKeyIdentifier     = hash
 #authorityKeyIdentifier  = keyid:always, issuer:always
-basicConstraints     = critical, CA:FALSE
-keyUsage             = critical, digitalSignature, keyEncipherment, keyAgreement
-extendedKeyUsage     = critical, serverAuth
-#subjectAltName       = @alternate_names
-nsComment            = "OpenSSL Generated Server Certificate"
+basicConstraints         = critical, CA:FALSE
+keyUsage                 = critical, digitalSignature, keyEncipherment, keyAgreement
+extendedKeyUsage         = critical, serverAuth
+#subjectAltName          = @alternate_names
+nsComment                = "OpenSSL Generated Server Certificate"
 

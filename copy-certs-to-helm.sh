@@ -37,18 +37,16 @@ cp generated/client_keystore.jks generated/server.pkcs12 generated/kafka-server.
 echo "================================================="
 echo "Copying certs to wlan-port-forwarding-gateway-service certs folder"
 cp generated/client_keystore.jks generated/server.pkcs12 generated/truststore.jks "$1"/tip-wlan/charts/wlan-port-forwarding-gateway-service/resources/config/certs/
-echo "==================================="
-echo "Copying certs to kafka certs folder"
-cp generated/kafka-server.pkcs12 generated/truststore.jks "$1"/tip-wlan/charts/kafka/resources/config/certs/
-echo "======================================="
-echo "Copying certs to cassandra certs folder"
-cp generated/cassandra_server_keystore.jks generated/truststore.jks generated/cacert.pem generated/cassandraserverkey_dec.pem generated/cassandraservercert.pem "$1"/tip-wlan/charts/cassandra/resources/config/certs/
-echo "======================================"
-echo "Copying certs to postgres certs folder"
-cp generated/cacert.pem generated/postgresclientcert.pem generated/postgresclientkey_dec.pem generated/servercert.pem generated/serverkey_dec.pem "$1"/tip-wlan/charts/postgresql/resources/config/certs/
+echo "========================================"
+echo "Stateful services rework certifices copy"
+find ./generated -type f -exec cp {} "$1"/tip-wlan/resources/certs \;
 echo "========= All Certs Copied =========="
 echo "NOTE: Additional changes are expected in Kafka, Postgres and Cassandra charts before you start deployment. Refer https://telecominfraproject.atlassian.net/wiki/spaces/WIFI/pages/262176803/Pre-requisites+before+deploying+Tip-Wlan+solution"
 
-echo "========================================"
-echo "Stateful services rework certifices copy"
-find ./generated -type f -exec cp {} "$1"/tip-wlan/resources/certs 
+echo "### OUTDATED, NOT NEEDED ANYMORE"
+echo "Copying certs to kafka certs folder"
+cp generated/kafka-server.pkcs12 generated/truststore.jks "$1"/tip-wlan/charts/kafka/resources/config/certs/
+echo "Copying certs to cassandra certs folder"
+cp generated/cassandra_server_keystore.jks generated/truststore.jks generated/cacert.pem generated/cassandraserverkey_dec.pem generated/cassandraservercert.pem "$1"/tip-wlan/charts/cassandra/resources/config/certs/
+echo "Copying certs to postgres certs folder"
+cp generated/cacert.pem generated/postgresclientcert.pem generated/postgresclientkey_dec.pem generated/servercert.pem generated/serverkey_dec.pem "$1"/tip-wlan/charts/postgresql/resources/config/certs/
