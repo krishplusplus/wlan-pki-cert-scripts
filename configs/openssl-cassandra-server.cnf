@@ -1,8 +1,8 @@
-HOME            = .
-RANDFILE        = $ENV::HOME/.rnd
+HOME               = .
+RANDFILE           = $ENV::HOME/.rnd
 
-input_password  = mypassword
-output_password = mypassword
+input_password     = mypassword
+output_password    = mypassword
 
 ####################################################################
 [ req ]
@@ -14,23 +14,23 @@ string_mask        = utf8only
 
 ####################################################################
 [ server_distinguished_name ]
-countryName         = Country Name (2 letter code)
-countryName_default = CA
+countryName                 = Country Name (2 letter code)
+countryName_default         = CA
 
 stateOrProvinceName         = State or Province Name (full name)
 stateOrProvinceName_default = Ontario
 
-localityName         = Locality Name (eg, city)
-localityName_default = Ottawa
+localityName                = Locality Name (eg, city)
+localityName_default        = Ottawa
 
 organizationName            = Organization Name (eg, company)
 organizationName_default    = ConnectUs Technologies
 
-commonName           = Common Name (e.g. server FQDN or YOUR name)
-commonName_default   = Test_Server_Cassandra
+commonName                  = Common Name (e.g. server FQDN or YOUR name)
+commonName_default          = Test_Server_Cassandra
 
-emailAddress         = Email Address
-emailAddress_default = test@example.com
+emailAddress                = Email Address
+emailAddress_default        = test@example.com
 
 ####################################################################
 [ server_req_extensions ]

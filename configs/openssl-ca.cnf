@@ -47,7 +47,6 @@ x509_extensions        = ca_extensions
 string_mask            = utf8only
 
 [ crl_ext ]
-
 # CRL extensions.
 # Only issuerAltName and authorityKeyIdentifier make any sense in a CRL.
 
@@ -108,7 +107,5 @@ authorityKeyIdentifier = keyid,issuer
 basicConstraints       = CA:FALSE
 keyUsage               = digitalSignature
 
-
 [ policy_match ]
 organizationName       = match
-
