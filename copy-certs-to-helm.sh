@@ -45,8 +45,8 @@ echo "NOTE: Additional changes are expected in Kafka, Postgres and Cassandra cha
 
 echo "### OUTDATED, NOT NEEDED ANYMORE"
 echo "Copying certs to kafka certs folder"
-cp generated/kafka-server.pkcs12 generated/truststore.jks "$1"/tip-wlan/charts/kafka/resources/config/certs/
+cp generated/kafka-server.pkcs12 generated/truststore.jks "$1"/tip-wlan/charts/kafka/resources/config/certs/ || true
 echo "Copying certs to cassandra certs folder"
-cp generated/cassandra_server_keystore.jks generated/truststore.jks generated/cacert.pem generated/cassandraserverkey_dec.pem generated/cassandraservercert.pem "$1"/tip-wlan/charts/cassandra/resources/config/certs/
+cp generated/cassandra_server_keystore.jks generated/truststore.jks generated/cacert.pem generated/cassandraserverkey_dec.pem generated/cassandraservercert.pem "$1"/tip-wlan/charts/cassandra/resources/config/certs/ || true
 echo "Copying certs to postgres certs folder"
-cp generated/cacert.pem generated/postgresclientcert.pem generated/postgresclientkey_dec.pem generated/servercert.pem generated/serverkey_dec.pem "$1"/tip-wlan/charts/postgresql/resources/config/certs/
+cp generated/cacert.pem generated/postgresclientcert.pem generated/postgresclientkey_dec.pem generated/servercert.pem generated/serverkey_dec.pem "$1"/tip-wlan/charts/postgresql/resources/config/certs/ || true
