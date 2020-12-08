@@ -39,6 +39,7 @@ echo "Copying certs to wlan-port-forwarding-gateway-service certs folder"
 cp generated/client_keystore.jks generated/server.pkcs12 generated/truststore.jks "$1"/tip-wlan/charts/wlan-port-forwarding-gateway-service/resources/config/certs/
 echo "========================================"
 echo "Stateful services rework certifices copy"
+mkdir "$1"/tip-wlan-resources/certs
 find ./generated -type f -exec cp {} "$1"/tip-wlan/resources/certs \;
 echo "========= All Certs Copied =========="
 echo "NOTE: Additional changes are expected in Kafka, Postgres and Cassandra charts before you start deployment. Refer https://telecominfraproject.atlassian.net/wiki/spaces/WIFI/pages/262176803/Pre-requisites+before+deploying+Tip-Wlan+solution"
