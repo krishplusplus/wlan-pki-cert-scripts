@@ -34,13 +34,14 @@ echo Creating Client Certificate signed by DigiCert
 ./create-client-cert-request.sh
 request_certificate "clientcert.csr" "clientcert.pem" "$mac" "$CLIENT_ENROLLMENT_PROFILE_ID" "$extra_ap_params"
 extract_single_cert "clientcert" "client_cacert"
+./decrypt-client-key.sh
 
 echo ====================================================
 echo Verifying Client Certificate
 ./verify-client.sh clientcert.pem client_cacert.pem
 
-echo ====================================================
-echo Packaging Client Certificates
-echo This will import the newly generated AP certificate into client_keystore.jks file
-./package-client-cert.sh client_cacert.pem
+#echo ====================================================
+#echo Packaging Client Certificates
+#echo This will import the newly generated AP certificate into client_keystore.jks file
+#./package-client-cert.sh client_cacert.pem
 
