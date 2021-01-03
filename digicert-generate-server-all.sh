@@ -12,12 +12,14 @@ echo Creating Generic Server Certificate
 ./create-server-cert-request.sh
 request_certificate "servercert.csr" "servercert.pem" "server-$(new_uuid)" "$SERVER_ENROLLMENT_PROFILE_ID"
 extract_single_cert "servercert" "cacert"
+./decrypt-server-key.sh
 
 echo ====================================================
 echo Creating MQTT Server Certificate
 ./create-mqtt-server-cert-request.sh
 request_certificate "mqttservercert.csr" "mqttservercert.pem" "mqtt-$(new_uuid)" "$SERVER_ENROLLMENT_PROFILE_ID"
 extract_single_cert "mqttservercert" "cacert"
+./decrypt-mqtt-server-key.sh
 
 echo ====================================================
 echo Creating Kafka Server Certificate
@@ -30,12 +32,14 @@ echo Creating Cassandra Server Certificate
 ./create-cassandra-server-cert-request.sh
 request_certificate "cassandraservercert.csr" "cassandraservercert.pem" "cassandra-$(new_uuid)" "$SERVER_ENROLLMENT_PROFILE_ID"
 extract_single_cert "cassandraservercert" "cacert"
+./decrypt-cassandra-server-key.sh
 
 echo ====================================================
 echo Creating Postgres Client Certificates
 ./create-postgres-client-cert-request.sh
-request_certificate "postgresclientcert.csr" "postgresclientcert.pem" "postgres-$(new_uuid)" "$SERVER_ENROLLMENT_PROFILE_ID"
+request_certificate "postgresclientcert.csr" "postgresclientcert.pem" "postgres-$(new_uuid)" "$SERVER_WITH_CLIENT_ENROLLMENT_PROFILE_ID"
 extract_single_cert "postgresclientcert" "cacert"
+./decrypt-postgres-client-key.sh
 
 echo ====================================================
 echo Verifying Server Certificate
@@ -43,10 +47,17 @@ echo Verifying Server Certificate
 
 echo ====================================================
 echo Packaging Server Certificates
+./package-ca-cert.sh cacert.pem
 ./package-server-cert.sh cacert.pem
 ./package-kafka-server-cert.sh cacert.pem
 ./package-cassandra-server-cert.sh cacert.pem
 ./package-postgres-client-cert.sh cacert.pem
+
+echo ====================================================
+echo Creating Client-side truststore
+echo This truststore will trust all certificates issued
+echo by TIPs DigiCert CA
+keytool -import -trustcacerts -alias clientqrcode -file cacert.pem -keystore client_keystore.jks -srcstorepass mypassword -deststorepass mypassword -deststoretype JKS -noprompt
 
 echo ====================================================
 echo All Done
