@@ -45,3 +45,12 @@ echo Verifying Client Certificate
 #echo This will import the newly generated AP certificate into client_keystore.jks file
 #./package-client-cert.sh client_cacert.pem
 
+echo ====================================================
+echo Query DigiCert API to get and save the Device ID
+get-device-id "$mac" "client_deviceid.txt"
+
+echo ====================================================
+echo Verify we can query device info using the generated
+echo device key and certificate
+curl -X GET https://clientauth.demo.one.digicert.com/iot/api/v2/device/`cat client_deviceid.txt` --key clientkey_dec.pem --cert clientcert.pem
+

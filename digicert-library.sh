@@ -52,3 +52,17 @@ function extract_single_cert() {
   rm -rf cert*.pem
 }
 
+function get-device-id() {
+  local device_identifier=$1
+  local save_as=$2
+
+  # YYYY-MM-DD
+  today=$(date +%F)
+
+  response=$(curl \
+    --silent \
+    --request GET "https://demo.one.digicert.com/iot/api/v2/device?limit=1&device_identifier=${device_identifier}&created_from=$today" \
+    --header "x-api-key: $API_KEY")
+
+  echo $response | jq --raw-output .records[0].id > "${save_as}"
+}

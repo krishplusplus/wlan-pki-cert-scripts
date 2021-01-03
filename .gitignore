@@ -5,3 +5,4 @@
 *.p12
 *.bak
 testCA/**
+client_deviceid.txt
