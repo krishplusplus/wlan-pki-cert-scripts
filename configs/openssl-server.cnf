@@ -46,8 +46,8 @@ nsComment                = "OpenSSL Generated Server Certificate"
 ####################################################################
 [ alternate_names ]
 
-DNS.1  = opensync-redirector.cicd.lab.wlan.tip.build
-DNS.2  = opensync-controller.cicd.lab.wlan.tip.build
+DNS.1  = opensync-redirector.testcluster.lab.wlan.tip.build
+DNS.2  = opensync-controller.testcluster.lab.wlan.tip.build
 DNS.3  = tip-wlan-postgresql
 
 # IPv4 localhost

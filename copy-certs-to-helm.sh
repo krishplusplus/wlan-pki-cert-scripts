@@ -43,6 +43,13 @@ find ./generated -type f -exec cp {} "$1"/tip-wlan/resources/certs \;
 echo "========= All Certs Copied =========="
 echo "NOTE: Additional changes are expected in Kafka, Postgres and Cassandra charts before you start deployment. Refer https://telecominfraproject.atlassian.net/wiki/spaces/WIFI/pages/262176803/Pre-requisites+before+deploying+Tip-Wlan+solution"
 
+echo "========= Creating AP Package ======="
+cp ./generated/cacert.pem ./generated/ca.pem
+cp ./generated/clientcert.pem ./generated/client.pem
+cp ./generated/clientkey_dec.pem ./generated/client_dec.key
+zip ./generated/ap.zip ./generated/ca.pem ./generated/client.pem ./generated/client_dec.key -j
+rm ./generated/ca.pem ./generated/client.pem ./generated/client_dec.key
+
 echo "### OUTDATED, NOT NEEDED ANYMORE"
 echo "Copying certs to kafka certs folder"
 cp generated/kafka-server.pkcs12 generated/truststore.jks "$1"/tip-wlan/charts/kafka/resources/config/certs/ || true
