@@ -7,7 +7,7 @@ output_password = mypassword
 ####################################################################
 [ req ]
 default_bits       = 2048
-default_keyfile    = clientkey.pem
+default_keyfile    = postgresclientkey.pem
 distinguished_name = client_distinguished_name
 req_extensions     = client_req_extensions
 string_mask        = utf8only
@@ -27,7 +27,7 @@ organizationName            = Organization Name (eg, company)
 organizationName_default    = ConnectUs Technologies
 
 commonName           = Common Name (e.g. server FQDN or YOUR name)
-commonName_default   = Open_AP
+commonName_default   = postgres
 
 emailAddress         = Email Address
 emailAddress_default = test@example.com
@@ -37,9 +37,9 @@ emailAddress_default = test@example.com
 
 subjectKeyIdentifier = hash
 #authorityKeyIdentifier  = keyid:always, issuer:always
-basicConstraints     = critical, CA:FALSE
-keyUsage             = critical, digitalSignature, keyEncipherment
-extendedKeyUsage     = critical, clientAuth
+#basicConstraints     = critical, CA:FALSE
+#keyUsage             = critical, digitalSignature, keyEncipherment
+#extendedKeyUsage     = critical, clientAuth
 nsComment            = "OpenSSL Generated Client Certificate"
 
 ####################################################################
