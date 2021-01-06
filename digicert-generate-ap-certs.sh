@@ -31,7 +31,7 @@ source "$DIR/digicert-library.sh"
 
 echo ====================================================
 echo Creating Client Certificate signed by DigiCert
-./create-client-cert-request.sh
+./create-client-cert-request.sh "digicert-openssl-client.cnf"
 request_certificate "clientcert.csr" "clientcert.pem" "$mac" "$CLIENT_ENROLLMENT_PROFILE_ID" "$extra_ap_params"
 extract_single_cert "clientcert" "client_cacert"
 ./decrypt-client-key.sh

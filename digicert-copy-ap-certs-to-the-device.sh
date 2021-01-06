@@ -3,7 +3,7 @@
 set -ex
 
 # Print usage
-if [ $# -lt 3 ]; then
+if [ $# -lt 1 ]; then
     echo "No arguments provided!"
     echo "Usage: $0 <AP host name or IP>"
     exit 1
