@@ -5,7 +5,7 @@ DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "$DIR" ]]; then DIR="$PWD"; fi
 source "$DIR/digicert-library.sh"
 
-set -ex
+set -e
 
 echo ====================================================
 echo Creating Generic Server Certificate
