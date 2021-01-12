@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -ex
+set -e
 
 # Print usage
 if [ $# -lt 3 ]; then

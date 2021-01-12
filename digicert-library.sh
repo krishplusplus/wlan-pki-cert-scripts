@@ -1,6 +1,6 @@
 #!/bin/bash
 
-: "${API_KEY:?API_KEY env variable is not set or empty}"
+: "${DIGICERT_API_KEY:?DIGICERT_API_KEY env variable is not set or empty}"
 
 SERVER_ENROLLMENT_PROFILE_ID='IOT_f6305673-f3e0-4cc7-98dd-7b510bc6b6ca'
 CLIENT_ENROLLMENT_PROFILE_ID='IOT_9f2b75b7-7816-4640-afbd-0c6e6e42cbb0'
@@ -35,7 +35,7 @@ EOF
   response=$(curl \
     --silent \
     --request POST 'https://demo.one.digicert.com/iot/api/v1/certificate' \
-    --header "x-api-key: $API_KEY" \
+    --header "x-api-key: $DIGICERT_API_KEY" \
     --header "Content-Type: application/json" \
     --data-raw "$request")
  
@@ -62,7 +62,7 @@ function get-device-id() {
   response=$(curl \
     --silent \
     --request GET "https://demo.one.digicert.com/iot/api/v2/device?limit=1&device_identifier=${device_identifier}&created_from=$today" \
-    --header "x-api-key: $API_KEY")
+    --header "x-api-key: $DIGICERT_API_KEY")
 
   echo $response | jq --raw-output .records[0].id > "${save_as}"
 }
