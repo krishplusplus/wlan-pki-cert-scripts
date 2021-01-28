@@ -5,3 +5,5 @@
 *.p12
 *.bak
 testCA/**
+
+local-generated
