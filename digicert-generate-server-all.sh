@@ -43,21 +43,21 @@ extract_single_cert "postgresclientcert" "cacert"
 
 echo ====================================================
 echo Verifying Server Certificate
-./verify-server.sh $GENERATED_DIR/servercert.pem $GENERATED_DIR/cacert.pem
+./verify-server.sh "$GENERATED_DIR/servercert.pem" "$GENERATED_DIR/cacert.pem"
 
 echo ====================================================
 echo Packaging Server Certificates
-./package-ca-cert.sh $GENERATED_DIR/cacert.pem
-./package-server-cert.sh $GENERATED_DIR/cacert.pem
-./package-kafka-server-cert.sh $GENERATED_DIR/cacert.pem
-./package-cassandra-server-cert.sh $GENERATED_DIR/cacert.pem
-./package-postgres-client-cert.sh $GENERATED_DIR/cacert.pem
+./package-ca-cert.sh "$GENERATED_DIR/cacert.pem"
+./package-server-cert.sh "$GENERATED_DIR/cacert.pem"
+./package-kafka-server-cert.sh "$GENERATED_DIR/cacert.pem"
+./package-cassandra-server-cert.sh "$GENERATED_DIR/cacert.pem"
+./package-postgres-client-cert.sh "$GENERATED_DIR/cacert.pem"
 
 echo ====================================================
 echo Creating Client-side truststore
 echo This truststore will trust all certificates issued
 echo by TIPs DigiCert CA
-./package-client-cert.sh $GENERATED_DIR/cacert.pem
+./package-client-cert.sh "$GENERATED_DIR/cacert.pem"
 
 echo ====================================================
 echo All Done
