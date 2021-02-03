@@ -9,6 +9,15 @@ export CNF_DIR="configs"
 export CSR_DIR="csr"
 export GENERATED_DIR="generated"
 
+function check_command() {
+  local command=$1
+  if ! command -v "$command" &> /dev/null
+  then
+      echo "command $command could not be found, please install it"
+      exit 1
+  fi
+}
+
 function new_uuid() {
   tr -dc 'a-zA-Z0-9' < /dev/urandom | fold -w 32 | head -n 1
 }
@@ -42,6 +51,7 @@ EOF
     --header "Content-Type: application/json" \
     --data-raw "$request")
 
+  check_command jq
   echo "$response" | tr '\r\n' ' ' | jq --raw-output .pem | awk '{gsub(/\\n/,"\n")}1' > "$cert_file"
 }
 
@@ -67,5 +77,6 @@ function get-device-id() {
     --request GET "https://demo.one.digicert.com/iot/api/v2/device?limit=1&device_identifier=${device_identifier}&created_from=$today" \
     --header "x-api-key: $DIGICERT_API_KEY")
 
+  check_command jq
   echo "$response" | jq --raw-output .records[0].id > "${save_as}"
 }
