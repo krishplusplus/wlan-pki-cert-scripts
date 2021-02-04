@@ -44,6 +44,7 @@ function request_certificate() {
 }
 EOF
 )
+
   response=$(curl \
     --silent \
     --request POST 'https://demo.one.digicert.com/iot/api/v1/certificate' \
@@ -74,7 +75,7 @@ function get-device-id() {
 
   response=$(curl \
     --silent \
-    --request GET "https://demo.one.digicert.com/iot/api/v2/device?limit=1&device_identifier=${device_identifier}&created_from=$today" \
+    --request GET "https://demo.one.digicert.com/iot/api/v2/device?limit=1&device_identifier=${device_identifier}&updated_from=$today" \
     --header "x-api-key: $DIGICERT_API_KEY")
 
   check_command jq
