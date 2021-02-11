@@ -11,8 +11,6 @@ then
   exit 1
 fi
 
-echo "Copying certs to wlan-integrated-cloud-component-service certs folder"
-cp generated/client_keystore.jks generated/server.pkcs12 generated/truststore.jks "$1"/tip-wlan/charts/wlan-integrated-cloud-component-service/resources/config/certs/
 echo "Copy certificates to a central location"
 find ./generated -type f -exec cp {} "$1"/tip-wlan/resources/certs \;
 echo "========= All Certs Copied =========="
@@ -32,6 +30,8 @@ echo "Copying certs to cassandra certs folder"
 cp generated/cassandra_server_keystore.jks generated/truststore.jks generated/cacert.pem generated/cassandraserverkey_dec.pem generated/cassandraservercert.pem "$1"/tip-wlan/charts/cassandra/resources/config/certs/ || true
 echo "Copying certs to postgres certs folder"
 cp generated/cacert.pem generated/postgresclientcert.pem generated/postgresclientkey_dec.pem generated/servercert.pem generated/serverkey_dec.pem "$1"/tip-wlan/charts/postgresql/resources/config/certs/ || true
+echo "Copying certs to wlan-integrated-cloud-component-service certs folder"
+cp generated/client_keystore.jks generated/server.pkcs12 generated/truststore.jks "$1"/tip-wlan/charts/wlan-integrated-cloud-component-service/resources/config/certs/ || true
 echo "Copying certs to opensync-gw-cloud certs folder"
 cp generated/cacert.pem generated/clientcert.pem generated/clientkey.pem generated/client_keystore.jks generated/server.pkcs12 generated/truststore.jks "$1"/tip-wlan/charts/opensync-gw-cloud/resources/config/certs || true
 echo "Copying certs to opensync-gw-static certs folder"
