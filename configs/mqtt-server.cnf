@@ -27,7 +27,7 @@ organizationName            = Organization Name (eg, company)
 organizationName_default    = ConnectUs Technologies
 
 commonName                  = Common Name (e.g. server FQDN or YOUR name)
-commonName_default          = opensync-mqtt-broker.testcluster.lab.wlan.tip.build
+commonName_default          = *.cicd.lab.wlan.tip.build
 
 emailAddress                = Email Address
 emailAddress_default        = test@example.com
@@ -43,3 +43,13 @@ extendedKeyUsage         = critical, serverAuth
 #subjectAltName          = @alternate_names
 nsComment                = "OpenSSL Generated Server Certificate"
 
+####################################################################
+[ alternate_names ]
+
+DNS.1  = localhost
+
+# IPv4 localhost
+IP.1     = 127.0.0.1
+
+# IPv6 localhost
+IP.2     = ::1
