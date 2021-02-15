@@ -46,8 +46,8 @@ nsComment               = "OpenSSL Generated Server and Client Certificate"
 ####################################################################
 [ alternate_names ]
 
-DNS.1  = tip-wlan-kafka-headless
-DNS.2  = localhost
+DNS.1 = tip-wlan-kafka-headless
+DNS.2 = localhost
 
 # IPv4 localhost
 IP.1     = 127.0.0.1
