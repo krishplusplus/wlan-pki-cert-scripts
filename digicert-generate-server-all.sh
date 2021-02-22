@@ -57,7 +57,7 @@ echo ====================================================
 echo Creating Client-side truststore
 echo This truststore will trust all certificates issued
 echo by TIPs DigiCert CA
-./package-client-cert.sh "$GENERATED_DIR/cacert.pem"
+#./package-client-cert.sh "$GENERATED_DIR/cacert.pem"
 
 echo ====================================================
 echo All Done
