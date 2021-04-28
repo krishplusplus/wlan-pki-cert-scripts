@@ -15,11 +15,11 @@ redirector="$3"
 
 extra_ap_params=",
     {
-      \"id\": \"4cad9c6f-7987-4eb4-a215-b3fb800b7be5\",
+      \"id\": \"ee8c4df3-20b4-4611-8557-f55883742bda\",
       \"value\": \"$redirector\"
     },
     {
-      \"id\": \"166bc7f6-a39d-4774-9b59-aaa0eaa9a106\",
+      \"id\": \"7768682a-32c5-4d84-a23d-746199847146\",
       \"value\": \"$manufacturer\"
     }
 "
