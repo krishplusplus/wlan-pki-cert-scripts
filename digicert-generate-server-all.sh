@@ -57,7 +57,10 @@ echo ====================================================
 echo Creating Client-side truststore
 echo This truststore will trust all certificates issued
 echo by TIPs DigiCert CA
-#./package-client-cert.sh "$GENERATED_DIR/cacert.pem"
+# using server certificate here for the inter-service communication, make sure that certificate has client key usage enabled
+openssl pkcs12 -export -in generated/servercert.pem -inkey generated/serverkey.pem -passin pass:mypassword -passout pass:mypassword -out generated/client.pkcs12 -name clientqrcode -CAfile "$GENERATED_DIR/cacert.pem" -caname root -chain
+keytool -importkeystore -destkeystore generated/client_keystore.jks -srckeystore generated/client.pkcs12 -srcstoretype pkcs12 -srcstorepass mypassword -deststorepass mypassword -deststoretype JKS -alias clientqrcode
+
 
 echo ====================================================
 echo All Done

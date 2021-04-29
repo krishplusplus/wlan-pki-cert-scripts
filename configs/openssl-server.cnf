@@ -39,7 +39,7 @@ subjectKeyIdentifier     = hash
 #authorityKeyIdentifier  = keyid:always, issuer:always
 basicConstraints         = critical, CA:FALSE
 keyUsage                 = critical, digitalSignature, keyEncipherment, keyAgreement
-extendedKeyUsage         = critical, serverAuth
+extendedKeyUsage         = critical, serverAuth, clientAuth
 subjectAltName           = @alternate_names
 nsComment                = "OpenSSL Generated Server Certificate"
 
