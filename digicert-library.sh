@@ -1,9 +1,11 @@
 #!/bin/bash
 
 : "${DIGICERT_API_KEY:?DIGICERT_API_KEY env variable is not set or empty}"
+: "${SERVER_ENROLLMENT_PROFILE_ID:?SERVER_ENROLLMENT_PROFILE_ID env variable is not set or empty}"
+: "${CLIENT_ENROLLMENT_PROFILE_ID:?CLIENT_ENROLLMENT_PROFILE_ID env variable is not set or empty}"
 
-export SERVER_ENROLLMENT_PROFILE_ID='IOT_5e405ae7-bdbd-46f2-accd-1667d581dfe7'
-export CLIENT_ENROLLMENT_PROFILE_ID='IOT_abf4d6c6-2575-462a-9338-f902b42a73d2'
+#export SERVER_ENROLLMENT_PROFILE_ID='IOT_5e405ae7-bdbd-46f2-accd-1667d581dfe7'
+#export CLIENT_ENROLLMENT_PROFILE_ID='IOT_abf4d6c6-2575-462a-9338-f902b42a73d2'
 export SERVER_WITH_CLIENT_ENROLLMENT_PROFILE_ID=$SERVER_ENROLLMENT_PROFILE_ID # TODO: create profile with client and server certs
 export CNF_DIR="configs"
 export CSR_DIR="csr"
@@ -50,7 +52,6 @@ EOF
 )
 
   response=$(curl \
-    --silent \
     --request POST 'https://one.digicert.com/iot/api/v1/certificate' \
     --header "x-api-key: $DIGICERT_API_KEY" \
     --header "Content-Type: application/json" \

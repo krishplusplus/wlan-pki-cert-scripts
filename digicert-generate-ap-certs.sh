@@ -31,8 +31,12 @@ source "$DIR/digicert-library.sh"
 
 echo ====================================================
 echo Creating Client Certificate signed by DigiCert
-./create-client-cert-request.sh "$CNF_DIR/digicert-openssl-client.cnf"
-request_certificate "$CSR_DIR/clientcert.csr" "$GENERATED_DIR/clientcert.pem" "$mac" "$CLIENT_ENROLLMENT_PROFILE_ID" "$extra_ap_params"
+#./create-client-cert-request.sh "$CNF_DIR/digicert-openssl-client.cnf"
+
+# Generate certificate request
+openssl req -batch -config configs/openssl-client.cnf -newkey rsa:2048 -sha256 -out "$CSR_DIR/$inventoryId-cert.csr" -keyout "ap_keys/$inventoryId-key.pem" -subj "/C=US/ST=/L=/O=Telecom Infra Project Inc./CN=$mac" -outform PEM -nodes
+
+request_certificate "$CSR_DIR/$inventoryId-cert.csr" "$GENERATED_DIR/clientcert.pem" "$mac" "$CLIENT_ENROLLMENT_PROFILE_ID" "$extra_ap_params"
 extract_single_cert "clientcert" "client_cacert"
 ./decrypt-client-key.sh
 

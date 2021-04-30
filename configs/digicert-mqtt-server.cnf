@@ -24,10 +24,10 @@ localityName         = Locality Name (eg, city)
 localityName_default = Ottawa
 
 organizationName            = Organization Name (eg, company)
-organizationName_default    = ConnectUs Technologies
+organizationName_default    = TIP
 
 commonName           = Common Name (e.g. server FQDN or YOUR name)
-commonName_default   = opensync-mqtt-broker.zone1.lab.wlan.tip.build
+commonName_default   = opensync-mqtt-broker.zone3.lab.connectus.ai
 
 emailAddress         = Email Address
 emailAddress_default = test@example.com
