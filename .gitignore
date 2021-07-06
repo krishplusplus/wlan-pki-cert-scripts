@@ -5,5 +5,5 @@
 *.p12
 *.bak
 testCA/**
-
 local-generated
+client_deviceid.txt

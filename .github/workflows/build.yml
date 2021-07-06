@@ -18,7 +18,7 @@ jobs:
           echo 0 > /tmp/retcode
 
           for f in `find . -name "*sh"`; do
-            shellcheck $f || (echo 1 > /tmp/retcode &&  true)
+            shellcheck --exclude=SC1090 $f || (echo 1 > /tmp/retcode &&  true)
           done
 
           retCode=`cat /tmp/retcode`
