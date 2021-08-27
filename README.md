@@ -168,7 +168,19 @@ $ ls generated
 ABCDEF123456.tar.gz  client_cacert.pem  clientcert.pem  client_deviceid.txt  clientkey_dec.pem  clientkey.pem
 ```
 
-**!Do not loose the key files as they cannot be recreated!**
+### Change an AP redirector URL
+
+To change the redirector URL of an AP you'll need:
+
+* the MAC address of the primary interface of your ID
+* the new URL the AP will be redirected to
+
+After collecting these infos you can change the redirector URL like so:
+
+```bash
+$ ./digicert-change-ap-redirector.sh ab:cd:ef:12:34:56 my-new-redirector.openwifi.tip.build
+...
+```
 
 ### Revoke cloud controller certificates
 
